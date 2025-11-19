@@ -15,7 +15,6 @@ public class Rental {
       return _movie;
    }
 
-   // 🔹 Método movido da classe Customer
    public double getCharge() {
       double result = 0;
 
@@ -38,5 +37,17 @@ public class Rental {
       }
 
       return result;
+   }
+
+   // 🔹 Novo método extraído
+   public int getFrequentRenterPoints() {
+      // Se for novo lançamento alugado por mais de um dia → 2 pontos
+      if (this.getMovie().getPriceCode() == Movie.NEW_RELEASE &&
+          this.getDaysRented() > 1) {
+         return 2;
+      }
+
+      // Caso contrário → 1 ponto
+      return 1;
    }
 }
