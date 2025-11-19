@@ -1,4 +1,5 @@
 public class Rental {
+
     private Movie _movie;
     private int _daysRented;
 
@@ -19,7 +20,6 @@ public class Rental {
         return _movie.getCharge(_daysRented);
     }
 
-    // AGORA APENAS DELEGA PARA MOVIE
     public int getFrequentRenterPoints() {
         return _movie.getFrequentRenterPoints(_daysRented);
     }
