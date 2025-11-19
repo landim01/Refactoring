@@ -20,15 +20,11 @@ public class Customer {
    public String statement() {
       double totalAmount = 0;
       int frequentRenterPoints = 0;
-
       Enumeration rentals = _rentals.elements();
       String result = "Rental Record for " + getName() + "\n";
 
       while (rentals.hasMoreElements()) {
          Rental each = (Rental) rentals.nextElement();
-
-         // método agora está em Rental
-         double thisAmount = each.getCharge();
 
          // add frequent renter points
          frequentRenterPoints++;
@@ -37,13 +33,15 @@ public class Customer {
             frequentRenterPoints++;
          }
 
-         // show figures for this rental
+         // show figures for this rental (SEM thisAmount)
          result += "\t" + each.getMovie().getTitle() + "\t" +
-               String.valueOf(thisAmount) + "\n";
+                   String.valueOf(each.getCharge()) + "\n";
 
-         totalAmount += thisAmount;
+         // soma direta (SEM thisAmount)
+         totalAmount += each.getCharge();
       }
 
+      // footer
       result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
       result += "You earned " + String.valueOf(frequentRenterPoints) +
                 " frequent renter points";
