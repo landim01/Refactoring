@@ -23,9 +23,9 @@ public class Movie {
         return _title;
     }
 
-    // Método movido do Rental — PASSO 1
     public double getCharge(int daysRented) {
         double result = 0;
+
         switch (getPriceCode()) {
             case REGULAR:
                 result += 2;
@@ -43,6 +43,15 @@ public class Movie {
                     result += (daysRented - 3) * 1.5;
                 break;
         }
+
         return result;
+    }
+
+    // NOVO MÉTODO EXTRAÍDO
+    public int getFrequentRenterPoints(int daysRented) {
+        if ((getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1)
+            return 2;
+
+        return 1;
     }
 }
