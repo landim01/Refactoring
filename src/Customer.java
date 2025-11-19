@@ -27,8 +27,8 @@ public class Customer {
       while (rentals.hasMoreElements()) {
          Rental each = (Rental) rentals.nextElement();
 
-         // Chamada ao método refatorado
-         double thisAmount = amountFor(each);
+         // método agora está em Rental
+         double thisAmount = each.getCharge();
 
          // add frequent renter points
          frequentRenterPoints++;
@@ -44,36 +44,10 @@ public class Customer {
          totalAmount += thisAmount;
       }
 
-      // add footer lines
       result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
       result += "You earned " + String.valueOf(frequentRenterPoints) +
                 " frequent renter points";
 
       return result;
-   }
-
-   // 🔹 Método refatorado com parâmetro renomeado
-   private double amountFor(Rental aRental) {
-      double thisAmount = 0;
-
-      switch (aRental.getMovie().getPriceCode()) {
-         case Movie.REGULAR:
-            thisAmount += 2;
-            if (aRental.getDaysRented() > 2)
-               thisAmount += (aRental.getDaysRented() - 2) * 1.5;
-            break;
-
-         case Movie.NEW_RELEASE:
-            thisAmount += aRental.getDaysRented() * 3;
-            break;
-
-         case Movie.CHILDRENS:
-            thisAmount += 1.5;
-            if (aRental.getDaysRented() > 3)
-               thisAmount += (aRental.getDaysRented() - 3) * 1.5;
-            break;
-      }
-
-      return thisAmount;
    }
 }
