@@ -1,6 +1,5 @@
 public class NewReleasePrice extends Price {
 
-    @Override
     public int getPriceCode() {
         return Movie.NEW_RELEASE;
     }
@@ -8,11 +7,5 @@ public class NewReleasePrice extends Price {
     @Override
     public double getCharge(int daysRented) {
         return daysRented * 3;
-    }
-
-    @Override
-    public int getFrequentRenterPoints(int daysRented) {
-        // bônus para lançamentos
-        return (daysRented > 1) ? 2 : 1;
     }
 }
