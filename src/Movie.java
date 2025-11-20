@@ -40,7 +40,6 @@ public class Movie {
         return _price.getCharge(daysRented);
     }
 
-    // *** PASSO 6: método agora delega para Price ***
     public int getFrequentRenterPoints(int daysRented) {
         return _price.getFrequentRenterPoints(daysRented);
     }
